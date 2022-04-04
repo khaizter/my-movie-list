@@ -1,3 +1,4 @@
+import classes from "./MoviePosterSection.module.css";
 import React, { useEffect, useState } from "react";
 import MoviePosterList from "./MoviePosterList";
 import MoviePagination from "./MoviePagination";
@@ -30,7 +31,7 @@ const MoviePosterSection = () => {
     });
 
   return (
-    <div className="App">
+    <div className={classes.section}>
       <h1>My Movie List</h1>
       <MoviePosterList movies={movies} />
       <MoviePagination nextPage={nextPage} prevPage={prevPage} />
