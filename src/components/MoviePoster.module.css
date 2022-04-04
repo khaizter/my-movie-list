@@ -5,4 +5,5 @@
 
 .movie-poster img {
   width: 100%;
+  aspect-ratio: 2 / 3;
 }
