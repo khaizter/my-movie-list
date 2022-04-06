@@ -1,0 +1,12 @@
+.movie-slide {
+  height: 500px;
+  padding: 1rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: start;
+}
+
+/* .section img {
+  width: 100%;
+  object-fit: cover;
+} */

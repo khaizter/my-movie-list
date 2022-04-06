@@ -2,25 +2,19 @@ import classes from "./MoviePosterSection.module.css";
 import React, { useEffect, useState } from "react";
 import MoviePosterList from "./MoviePosterList";
 import MoviePagination from "./MoviePagination";
+import { fetchDiscover } from "../data/index";
 
 const MoviePosterSection = () => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetchMovies();
+    const fetchApi = async () => {
+      const data = await fetchDiscover(currentPage);
+      setMovies(data.results);
+    };
+    fetchApi();
   }, [currentPage]);
-
-  const fetchMovies = async () => {
-    fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=eb56800a149ce9fa8f8b67af5e2a01ab&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}&with_watch_monetization_types=flatrate`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setMovies(data.results);
-        console.log(data.results);
-      });
-  };
 
   const nextPage = () => setCurrentPage((currentPage) => currentPage + 1);
 
