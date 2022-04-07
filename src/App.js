@@ -1,7 +1,10 @@
 import "./App.css";
-import React, { Fragment, useEffect } from "react";
-import MovieSliderSection from "./components/MovieSliderSection";
-import MoviePosterSection from "./components/MoviePosterSection";
+import React, { useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import Browse from "./pages/Browse";
+import MovieDetail from "./pages/MovieDetail";
+import Error from "./pages/Error";
 
 function App() {
   useEffect(() => {
@@ -30,11 +33,25 @@ function App() {
   };
 
   return (
-    <Fragment>
-      <MovieSliderSection />
-      <MoviePosterSection />
-    </Fragment>
+    <Switch>
+      <Route path="/" exact>
+        <Home />
+      </Route>
+      <Route path="/movies" exact>
+        <Browse />
+      </Route>
+      <Route path="/movies/:movieId">
+        <MovieDetail />
+      </Route>
+      <Route path="*">
+        <Error />
+      </Route>
+    </Switch>
   );
 }
 
 export default App;
+
+// / => Home.js - this is our landing page where we show nowshowing movies latest movies top rated movies and etc
+// /movies/movieid => MovieDetail.js - where we can show trailer views etc and more details
+// /movies => browse movies

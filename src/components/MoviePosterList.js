@@ -9,6 +9,7 @@ const MoviePosterList = ({ movies }) => {
         return (
           <MoviePoster
             key={movie.id}
+            id={movie.id}
             poster_path={movie.poster_path}
             title={movie.title}
           />
