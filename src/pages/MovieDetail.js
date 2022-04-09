@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import { useParams, useHistory } from "react-router-dom";
+import Modal from "../components/Modal";
 import {
   fetchMovieCredits,
   fetchMovieDetails,
@@ -10,11 +11,13 @@ import {
 import Error from "./Error";
 
 const MovieDetail = () => {
+  const history = useHistory();
   const [details, setDetails] = useState({});
   const [credits, setCredits] = useState({});
   const [videos, setVideos] = useState({});
   const { movieId } = useParams();
-  const history = useHistory();
+
+  const [showTrailer, setShowTrailer] = useState(false);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -47,7 +50,7 @@ const MovieDetail = () => {
       <div>
         Movie Details
         <img src={`${imageUrl}w342/${details.poster_path}`} alt=""></img>
-        <button>Trailer</button>
+        <button onClick={() => setShowTrailer(true)}>Trailer</button>
         <p>{details.title}</p>
         <p>{details.overview}</p>
         <p>{details.runtime}</p>
@@ -73,14 +76,17 @@ const MovieDetail = () => {
               );
             })}
         </ul>
-        <p>Trailer</p>
-        {videos.results && (
-          <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${videos.results[0].key}`}
-            playing
-            controls={true}
-          />
-        )}
+        <Modal showModal={showTrailer} onClose={() => setShowTrailer(false)}>
+          <p>Trailer</p>
+          {videos.results && (
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${videos.results[0].key}`}
+              playing
+              controls={true}
+            />
+          )}
+          <button onClick={() => setShowTrailer(false)}>Back</button>
+        </Modal>
       </div>
     );
   }
