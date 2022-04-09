@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
+import ReactPlayer from "react-player/youtube";
 import { useParams, useHistory } from "react-router-dom";
-import { fetchMovieCredits, fetchMovieDetails, imageUrl } from "../data";
+import {
+  fetchMovieCredits,
+  fetchMovieDetails,
+  fetchMovieVideos,
+  imageUrl,
+} from "../data";
 import Error from "./Error";
 
 const MovieDetail = () => {
   const [details, setDetails] = useState({});
   const [credits, setCredits] = useState({});
+  const [videos, setVideos] = useState({});
   const { movieId } = useParams();
   const history = useHistory();
 
@@ -18,6 +25,10 @@ const MovieDetail = () => {
       const creditsData = await fetchMovieCredits(movieId);
       console.log(creditsData);
       setCredits(creditsData);
+
+      const videosData = await fetchMovieVideos(movieId);
+      console.log(videosData);
+      setVideos(videosData);
     };
     fetchApi();
   }, []);
@@ -62,6 +73,14 @@ const MovieDetail = () => {
               );
             })}
         </ul>
+        <p>Trailer</p>
+        {videos.results && (
+          <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${videos.results[0].key}`}
+            playing
+            controls={true}
+          />
+        )}
       </div>
     );
   }

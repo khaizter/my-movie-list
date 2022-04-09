@@ -5,6 +5,7 @@ const discoverUrl = `${url}/discover/movie?api_key=${apiKey}&language=en-US&sort
 const nowPlayingUrl = `${url}/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`;
 const movieDetailsUrl = `${url}/movie/movieId?api_key=${apiKey}&language=en-US`;
 const movieCreditsUrl = `${url}/movie/movieId/credits?api_key=${apiKey}&language=en-US`;
+const movieVideosUrl = `${url}/movie/movieId/videos?api_key=${apiKey}&language=en-US`;
 
 export const fetchDiscover = async (page = 1) => {
   // fetch(discoverUrl.replace("page=1", `page=${page}`))
@@ -32,6 +33,12 @@ export const fetchMovieDetails = async (movieId) => {
 
 export const fetchMovieCredits = async (movieId) => {
   const response = await fetch(movieCreditsUrl.replace("movieId", movieId));
+  const data = await response.json();
+  return data;
+};
+
+export const fetchMovieVideos = async (movieId) => {
+  const response = await fetch(movieVideosUrl.replace("movieId", movieId));
   const data = await response.json();
   return data;
 };
