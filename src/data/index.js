@@ -6,6 +6,9 @@ const nowPlayingUrl = `${url}/movie/now_playing?api_key=${apiKey}&language=en-US
 const movieDetailsUrl = `${url}/movie/movieId?api_key=${apiKey}&language=en-US`;
 const movieCreditsUrl = `${url}/movie/movieId/credits?api_key=${apiKey}&language=en-US`;
 const movieVideosUrl = `${url}/movie/movieId/videos?api_key=${apiKey}&language=en-US`;
+const popularMoviesUrl = `${url}/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+const topratedMoviesUrl = `${url}/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
+const upcomingMoviesUrl = `${url}/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`;
 
 export const fetchDiscover = async (page = 1) => {
   // fetch(discoverUrl.replace("page=1", `page=${page}`))
@@ -39,6 +42,24 @@ export const fetchMovieCredits = async (movieId) => {
 
 export const fetchMovieVideos = async (movieId) => {
   const response = await fetch(movieVideosUrl.replace("movieId", movieId));
+  const data = await response.json();
+  return data;
+};
+
+export const fetchPopularMovies = async () => {
+  const response = await fetch(popularMoviesUrl);
+  const data = await response.json();
+  return data;
+};
+
+export const fetchTopratedMovies = async () => {
+  const response = await fetch(topratedMoviesUrl);
+  const data = await response.json();
+  return data;
+};
+
+export const fetchUpcomingMovies = async () => {
+  const response = await fetch(upcomingMoviesUrl);
   const data = await response.json();
   return data;
 };

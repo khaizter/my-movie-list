@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { fetchNowPlaying } from "../data";
 
-const MovieTrailerSection = () => {
+const MovieSliderSection = () => {
   const [movies, setMovies] = useState([]);
   const numberOfShowcase = 6;
 
@@ -44,4 +44,4 @@ const MovieTrailerSection = () => {
   );
 };
 
-export default MovieTrailerSection;
+export default MovieSliderSection;

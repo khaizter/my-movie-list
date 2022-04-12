@@ -1,12 +1,14 @@
 import React, { Fragment } from "react";
 import MoviePosterSection from "../components/MoviePosterSection";
-import MovieTrailerSection from "../components/MovieSliderSection";
+import MovieSliderSection from "../components/MovieSliderSection";
+import MovieSections from "../components/MovieSections";
 
 const Home = () => {
   return (
     <Fragment>
-      <MovieTrailerSection />
-      <MoviePosterSection />
+      <MovieSliderSection />
+      {/* <MoviePosterSection /> */}
+      <MovieSections />
     </Fragment>
   );
 };
