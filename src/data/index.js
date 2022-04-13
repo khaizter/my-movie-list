@@ -68,7 +68,7 @@ export const fetchUpcomingMovies = async () => {
 export const fetchSearchMovies = async (keyword = "", page = 1) => {
   let response;
   if (keyword.trim() === "") {
-    response = await fetch(discoverUrl);
+    response = await fetch(discoverUrl.replace("page=1", `page=${page}`));
   } else {
     const modifiedKeyword = searchMoviesUrl.replace("keyword", keyword);
     const modifiedPage = modifiedKeyword.replace("page=1", `page=${page}`);
