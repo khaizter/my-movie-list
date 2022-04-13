@@ -5,7 +5,7 @@ import MoviePoster from "./MoviePoster";
 const MovieSection = ({ movies, title = "Movie Section" }) => {
   return (
     <section className={classes.section}>
-      <h1>{title}</h1>
+      <h1 className={classes["section-title"]}>{title}</h1>
       <div className={classes["movie-list"]}>
         {movies.map((movie) => {
           return (

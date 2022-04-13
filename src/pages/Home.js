@@ -7,7 +7,6 @@ const Home = () => {
   return (
     <Fragment>
       <MovieSliderSection />
-      {/* <MoviePosterSection /> */}
       <MovieSections />
     </Fragment>
   );

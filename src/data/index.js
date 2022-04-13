@@ -9,6 +9,7 @@ const movieVideosUrl = `${url}/movie/movieId/videos?api_key=${apiKey}&language=e
 const popularMoviesUrl = `${url}/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 const topratedMoviesUrl = `${url}/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
 const upcomingMoviesUrl = `${url}/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`;
+const searchMoviesUrl = `${url}/search/movie?api_key=${apiKey}&language=en-US&query=keyword&page=1&include_adult=false`;
 
 export const fetchDiscover = async (page = 1) => {
   // fetch(discoverUrl.replace("page=1", `page=${page}`))
@@ -60,6 +61,19 @@ export const fetchTopratedMovies = async () => {
 
 export const fetchUpcomingMovies = async () => {
   const response = await fetch(upcomingMoviesUrl);
+  const data = await response.json();
+  return data;
+};
+
+export const fetchSearchMovies = async (keyword = "", page = 1) => {
+  let response;
+  if (keyword.trim() === "") {
+    response = await fetch(discoverUrl);
+  } else {
+    const modifiedKeyword = searchMoviesUrl.replace("keyword", keyword);
+    const modifiedPage = modifiedKeyword.replace("page=1", `page=${page}`);
+    response = await fetch(modifiedPage);
+  }
   const data = await response.json();
   return data;
 };

@@ -1,8 +1,18 @@
 .section {
+  width: 90%;
+}
+
+.section-title {
+  text-align: start;
+  font-weight: bold;
 }
 
 .movie-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.movie-list > div {
+  width: 25%;
 }

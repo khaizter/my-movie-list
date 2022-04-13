@@ -9,8 +9,8 @@ import {
 
 const MovieSections = () => {
   const [popularMovies, setPopularMovies] = useState([]);
-  const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [topratedMovies, setTopratedMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -19,16 +19,16 @@ const MovieSections = () => {
       const topratedMoviesData = await fetchTopratedMovies();
       setTopratedMovies(topratedMoviesData.results.slice(0, 8));
       const upcomingMoviesData = await fetchUpcomingMovies();
-      setUpcomingMovies(upcomingMoviesData.results.slice(0, 8));
+      setUpcomingMovies(upcomingMoviesData.results.slice(0, 4));
     };
     fetchApi();
   }, []);
 
   return (
-    <div>
+    <div className={classes.section}>
       <MovieSection movies={popularMovies} title={"Popular Movies"} />
-      <MovieSection movies={upcomingMovies} title={"Upcoming Movies"} />
       <MovieSection movies={topratedMovies} title={"Top Rated Movies"} />
+      <MovieSection movies={upcomingMovies} title={"Upcoming Movies"} />
     </div>
   );
 };

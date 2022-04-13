@@ -17,7 +17,7 @@ const MoviePoster = ({ poster_path, title, id }) => {
         alt=""
         onClick={showDetailHandler}
       ></img>
-      <h2>{title}</h2>
+      <h2 className={classes.title}>{title}</h2>
     </div>
   );
 };
