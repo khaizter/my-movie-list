@@ -3,11 +3,18 @@ import React, { useEffect, useState, useRef } from "react";
 import MoviePosterList from "./MoviePosterList";
 import { fetchSearchMovies } from "../data";
 import Pagination from "./Pagination";
+import { useHistory, useLocation } from "react-router-dom";
 
 const BrowseMovies = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const history = useHistory();
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+
+  const searchQuery = queryParams.get("search_query") || ""; // if queryParams return null we set it to empty string then
+  const currentPage = parseInt(queryParams.get("page")) || 1; // if queryParams return null default is page 1
+
   const [totalPage, setTotalPage] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const inputRef = useRef();
 
@@ -16,15 +23,25 @@ const BrowseMovies = () => {
       const moviesData = await fetchSearchMovies(searchQuery, currentPage);
       setMovies(moviesData.results);
       setTotalPage(moviesData.total_pages);
-      console.log(moviesData.total_pages);
     };
     fetchApi();
   }, [searchQuery, currentPage]);
 
   const searchMovieHandler = () => {
-    console.log(inputRef.current.value);
-    setSearchQuery(inputRef.current.value);
-    setCurrentPage(1);
+    const keywords = inputRef.current.value;
+    if (keywords.trim() !== "") {
+      history.push(`/movies?search_query=${keywords}&page=1`);
+    } else {
+      history.push("/movies?page=1");
+    }
+  };
+
+  const setPageHandler = (newPage) => {
+    if (searchQuery.trim() !== "") {
+      history.push(`/movies?search_query=${searchQuery}&page=${newPage}`);
+    } else {
+      history.push(`/movies?page=${newPage}`);
+    }
   };
 
   return (
@@ -33,11 +50,11 @@ const BrowseMovies = () => {
       <input ref={inputRef}></input>
       <button onClick={searchMovieHandler}>Search</button>
       {movies.length > 0 && <MoviePosterList movies={movies} />}
-      {movies.length == 0 && <p>No movies found!</p>}
+      {movies.length === 0 && <p>No movies found!</p>}
       <Pagination
         totalPage={totalPage}
         currentPage={currentPage}
-        setPage={setCurrentPage}
+        setPage={setPageHandler}
       />
     </div>
   );

@@ -8,8 +8,8 @@ import Error from "./pages/Error";
 
 function App() {
   useEffect(() => {
-    fetchConfiguration();
-    fetchTest();
+    // fetchConfiguration();
+    // fetchTest();
   }, []);
 
   const fetchConfiguration = async () => {
@@ -37,11 +37,11 @@ function App() {
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/movies" exact>
-        <Browse />
-      </Route>
       <Route path="/movies/:movieId">
         <MovieDetail />
+      </Route>
+      <Route path="/movies">
+        <Browse />
       </Route>
       <Route path="*">
         <Error />
