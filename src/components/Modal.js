@@ -15,7 +15,7 @@ const Modal = ({ showModal, children, onClose }) => {
     <div className={classes["modal-container"]} onClick={closeModalHandler}>
       {children}
     </div>,
-    document.getElementById("portal")
+    document.getElementById("modal")
   );
 };
 

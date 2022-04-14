@@ -22,15 +22,12 @@ const MovieDetail = () => {
   useEffect(() => {
     const fetchApi = async () => {
       const detailsData = await fetchMovieDetails(movieId);
-      console.log(detailsData);
       setDetails(detailsData);
 
       const creditsData = await fetchMovieCredits(movieId);
-      console.log(creditsData);
       setCredits(creditsData);
 
       const videosData = await fetchMovieVideos(movieId);
-      console.log(videosData);
       setVideos(videosData);
     };
     fetchApi();
