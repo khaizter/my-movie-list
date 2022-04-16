@@ -1,10 +1,11 @@
 import "./App.css";
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Browse from "./pages/Browse";
 import Error from "./pages/Error";
 import Movie from "./pages/Movie";
+import Header from "./components/Header";
 
 function App() {
   useEffect(() => {
@@ -33,20 +34,23 @@ function App() {
   };
 
   return (
-    <Switch>
-      <Route path="/" exact>
-        <Home />
-      </Route>
-      <Route path="/movies/:movieId">
-        <Movie />
-      </Route>
-      <Route path="/movies">
-        <Browse />
-      </Route>
-      <Route path="*">
-        <Error />
-      </Route>
-    </Switch>
+    <Fragment>
+      <Header />
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/movies/:movieId">
+          <Movie />
+        </Route>
+        <Route path="/movies">
+          <Browse />
+        </Route>
+        <Route path="*">
+          <Error />
+        </Route>
+      </Switch>
+    </Fragment>
   );
 }
 
