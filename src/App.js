@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Browse from "./pages/Browse";
-import MovieDetail from "./pages/MovieDetail";
 import Error from "./pages/Error";
+import Movie from "./pages/Movie";
 
 function App() {
   useEffect(() => {
@@ -38,7 +38,7 @@ function App() {
         <Home />
       </Route>
       <Route path="/movies/:movieId">
-        <MovieDetail />
+        <Movie />
       </Route>
       <Route path="/movies">
         <Browse />
