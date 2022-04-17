@@ -17,7 +17,9 @@ const Header = () => {
 
   return (
     <header className={classes.header}>
-      <Link to="/">Logo here!</Link>
+      <Link to="/" className={classes.logo}>
+        <img src="/images/logo.png" alt="" />
+      </Link>
       <ul className={classes.navigation}>
         <li className={classes["search-movie"]}>
           <input type="text" name="" id="" ref={searchRef} />

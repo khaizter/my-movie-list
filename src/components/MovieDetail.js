@@ -1,7 +1,7 @@
 import classes from "./MovieDetail.module.css";
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player/youtube";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Modal from "./Modal";
 import {
   fetchMovieCredits,
@@ -18,7 +18,6 @@ const convertMinutesToHours = (totalMinutes) => {
 };
 
 const MovieDetail = () => {
-  const history = useHistory();
   const [details, setDetails] = useState({});
   const [credits, setCredits] = useState({});
   const [videos, setVideos] = useState({});
@@ -38,7 +37,7 @@ const MovieDetail = () => {
       setVideos(videosData);
     };
     fetchApi();
-  }, []);
+  }, [movieId]);
 
   if (!details) {
     return <div>fetching data...</div>;

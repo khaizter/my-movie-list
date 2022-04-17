@@ -1,10 +1,15 @@
 .header {
-  height: 60px;
+  height: 100px;
   padding: 0 5rem;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.logo,
+.logo img {
+  height: 100%;
 }
 
 .navigation {
