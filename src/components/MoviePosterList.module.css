@@ -1,5 +1,16 @@
 .movie-poster-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  /* grid-row-gap: 10px; */
+  grid-template-columns: repeat(5, 20%);
+}
+
+@media only screen and (max-width: 1250px) {
+  .movie-poster-list {
+    grid-template-columns: repeat(4, 25%);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .movie-poster-list {
+    grid-template-columns: repeat(2, 50%);
+  }
 }

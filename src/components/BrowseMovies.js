@@ -45,7 +45,7 @@ const BrowseMovies = () => {
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       BrowseMovies
       <input ref={inputRef}></input>
       <button onClick={searchMovieHandler}>Search</button>

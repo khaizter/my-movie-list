@@ -1,5 +1,4 @@
 .section {
-  width: 90%;
 }
 
 .section-title {
@@ -8,11 +7,12 @@
 }
 
 .movie-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
 }
 
-.movie-list > div {
-  width: 25%;
+@media only screen and (max-width: 800px) {
+  .movie-list {
+    grid-template-columns: repeat(2, 50%);
+  }
 }
