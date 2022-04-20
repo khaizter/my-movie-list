@@ -53,10 +53,10 @@ const MovieSliderSection = () => {
                   className={classes["movie-slide__more-details"]}
                   onClick={detailsHandler.bind(null, movie.id)}
                 >
-                  More details
+                  MORE DETAILS
                 </button>
                 <button className={classes["movie-slide__trailer"]}>
-                  See trailer
+                  SEE TRAILER
                 </button>
               </div>
             </div>

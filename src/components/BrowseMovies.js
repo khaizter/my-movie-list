@@ -46,9 +46,16 @@ const BrowseMovies = () => {
 
   return (
     <div className={classes.container}>
-      BrowseMovies
-      <input ref={inputRef}></input>
-      <button onClick={searchMovieHandler}>Search</button>
+      <h1 className={classes.title}>Browse Movies</h1>
+      <div className={classes["filter-container"]}>
+        <input ref={inputRef}></input>
+        <button onClick={searchMovieHandler}>SEARCH</button>
+      </div>
+      <Pagination
+        totalPage={totalPage}
+        currentPage={currentPage}
+        setPage={setPageHandler}
+      />
       {movies.length > 0 && <MoviePosterList movies={movies} />}
       {movies.length === 0 && <p>No movies found!</p>}
       <Pagination

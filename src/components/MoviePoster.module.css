@@ -7,11 +7,11 @@
   width: 100%;
   aspect-ratio: 2 / 3;
   cursor: pointer;
-  border: 3px solid #a9bfce;
+  border: 3px solid #202833;
 }
 
 .movie-poster img:hover {
-  border: 3px solid #005a96;
+  border: 3px solid #46a29f;
 }
 
 .title {

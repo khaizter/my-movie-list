@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  color: white;
 }
 
 .movie-slide::before {
@@ -27,17 +28,21 @@
 .movie-slide__content-box {
   width: 70%;
   z-index: 10;
-  margin-top: 100px;
-  margin-left: 1rem;
+  margin-top: 110px;
+  margin-left: 5rem;
 }
 
 .movie-slide__title {
   font-weight: 700;
-  font-size: 30px;
+  font-size: 40px;
   line-height: 1.8;
+  color: #66fcf1;
 }
 
 .movie-slide__overview {
+  border-left: 4px #eca14e solid;
+  color: #c5c6c8;
+  padding-left: 1rem;
   font-weight: 400;
   font-size: 16px;
 }
@@ -47,20 +52,19 @@
 }
 
 .movie-slide__actions > button {
-  background: #0071bc;
+  background-color: #0b0c1000;
+  border: 2px #46a29f solid;
   font-weight: 400;
   font-size: 16px;
   color: #fff;
-  border: none;
   padding-top: 8px;
   padding-bottom: 8px;
-  border-radius: 4px;
   margin: 0 0.2rem;
   cursor: pointer;
 }
 
 .movie-slide__actions > button:hover {
-  background: #d9706d;
+  background: #46a29f;
 }
 
 .movie-slide__more-details {

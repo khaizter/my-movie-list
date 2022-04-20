@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #0b0c10;
+  color: white;
 }
 
 .movie-overview-section {
@@ -16,23 +18,24 @@
 
 .movie-poster-container img {
   display: block;
+  border: 3px solid #202833;
   width: 300px;
+  aspect-ratio: 2 / 3;
 }
 
 .movie-poster-container button {
+  background-color: #0b0c1000;
+  border: 2px #46a29f solid;
   margin-top: 0.5rem;
   font-size: 18px;
   padding-top: 8px;
   padding-bottom: 8px;
-  border-radius: 5px;
-  border: none;
-  background: #0071bc;
   color: #fff;
   cursor: pointer;
 }
 
 .movie-poster-container button:hover {
-  background: #d9706d;
+  background: #46a29f;
 }
 
 .movie-info-container {
@@ -44,13 +47,34 @@
 }
 
 .movie-info-container__title {
+  color: #66fcf1;
   font-weight: 700;
   font-size: 40px;
   line-height: 1.8;
 }
 
+.movie-info-container__overview {
+  color: #c5c6c8;
+}
+
+.movie-info-container__runtime {
+  margin-top: 1rem;
+}
+
+.movie-info-container__genres {
+  margin-top: 1rem;
+}
+
 .movie-info-container__genres > * {
   display: inline;
+}
+
+.movie-info-container__genre {
+  color: #909192;
+}
+
+.movie-info-container__genre:hover {
+  color: #66fcf1;
 }
 
 .movie-cast-section {
@@ -69,5 +93,8 @@
 
 .movie-cast-section img {
   display: block;
+  width: 200px;
   margin-bottom: 0.5rem;
+  aspect-ratio: 2 / 3;
+  border-radius: 30px;
 }

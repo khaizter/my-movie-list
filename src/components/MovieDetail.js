@@ -1,7 +1,7 @@
 import classes from "./MovieDetail.module.css";
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player/youtube";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Modal from "./Modal";
 import {
   fetchMovieCredits,
@@ -61,15 +61,24 @@ const MovieDetail = () => {
             <h1 className={classes["movie-info-container__title"]}>
               {details.title}
             </h1>
-            <p>{details.overview}</p>
-            <p>Runtime: {convertMinutesToHours(details.runtime)}</p>
+            <p className={classes["movie-info-container__overview"]}>
+              {details.overview}
+            </p>
+            <p className={classes["movie-info-container__runtime"]}>
+              Runtime: {convertMinutesToHours(details.runtime)}
+            </p>
             <ul className={classes["movie-info-container__genres"]}>
               <h2>Genres:</h2>
               {details.genres &&
                 details.genres.map((genre) => {
                   return (
                     <li key={genre.id}>
-                      <a href="#">{genre.name}</a>
+                      <Link
+                        to="/"
+                        className={classes["movie-info-container__genre"]}
+                      >
+                        {genre.name}
+                      </Link>
                     </li>
                   );
                 })}
@@ -85,7 +94,11 @@ const MovieDetail = () => {
                 return (
                   <li key={artist.id}>
                     <img
-                      src={`${imageUrl}w185/${artist.profile_path}`}
+                      src={
+                        artist.profile_path
+                          ? `${imageUrl}w185/${artist.profile_path}`
+                          : `/images/image-unavailable.jpg`
+                      }
                       alt=""
                     ></img>
                     {artist.name}

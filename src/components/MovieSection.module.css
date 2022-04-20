@@ -1,9 +1,12 @@
 .section {
+  margin-top: 2rem;
 }
 
 .section-title {
+  font-size: xx-large;
   text-align: start;
-  font-weight: bold;
+  line-height: 1.2;
+  color: #46a29f;
 }
 
 .movie-list {
