@@ -74,7 +74,7 @@ const MovieDetail = () => {
                   return (
                     <li key={genre.id}>
                       <Link
-                        to="/"
+                        to={`/movies?genre=${genre.id}`}
                         className={classes["movie-info-container__genre"]}
                       >
                         {genre.name}

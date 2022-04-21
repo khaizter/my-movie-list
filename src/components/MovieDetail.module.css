@@ -66,11 +66,13 @@
 }
 
 .movie-info-container__genres > * {
-  display: inline;
+  display: inline-block;
+  margin-right: 0.25rem;
 }
 
 .movie-info-container__genre {
   color: #909192;
+  text-decoration: none;
 }
 
 .movie-info-container__genre:hover {
