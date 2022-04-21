@@ -1,3 +1,4 @@
+import classes from "./MovieTrailer.module.css";
 import React, { useState, useEffect } from "react";
 import Modal from "./Modal";
 import ReactPlayer from "react-player/youtube";
@@ -25,11 +26,20 @@ const MovieTrailer = ({ showTrailer, setShowTrailer, trailerUrl, movieId }) => {
 
   return (
     <Modal showModal={showTrailer} onClose={() => setShowTrailer(false)}>
-      <p>Trailer</p>
+      <div className={classes["trailer-container"]}>
+        <p className={classes.title}>Trailer</p>
 
-      <ReactPlayer url={url} playing controls={true} />
+        <ReactPlayer
+          className={classes.player}
+          url={url}
+          playing
+          controls={true}
+        />
 
-      <button onClick={() => setShowTrailer(false)}>Back</button>
+        <button className={classes.back} onClick={() => setShowTrailer(false)}>
+          Back
+        </button>
+      </div>
     </Modal>
   );
 };
