@@ -46,7 +46,7 @@
 
 .search-movie > input {
   width: 100%;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #090a0d;
   border: 1px solid white;
   border-right: none;
   padding: px 15px;
@@ -65,7 +65,7 @@
   width: 40px;
   height: 36px;
   border: 1px solid white;
-  background: white;
+  background: #090a0d;
   text-align: center;
   color: #202124;
   border-radius: 0 5px 5px 0;

@@ -10,7 +10,7 @@ import Header from "./components/Header";
 function App() {
   useEffect(() => {
     // fetchConfiguration();
-    fetchTest();
+    // fetchTest();
   }, []);
 
   const fetchConfiguration = async () => {

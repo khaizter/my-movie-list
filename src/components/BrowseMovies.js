@@ -11,9 +11,13 @@ const BrowseMovies = () => {
 
   const queryParams = new URLSearchParams(location.search);
 
-  const searchQuery = queryParams.get("search_query") || ""; // if queryParams return null we set it to empty string then
+  const searchQuery = queryParams.get("search_query")
+    ? queryParams.get("search_query").replaceAll(" ", "+")
+    : ""; // if queryParams return null we set it to empty string then
   const currentPage = parseInt(queryParams.get("page")) || 1; // if queryParams return null default is page 1
   const genreQuery = parseInt(queryParams.get("genre"));
+
+  console.log(searchQuery);
 
   const [totalPage, setTotalPage] = useState(1);
   const [movies, setMovies] = useState([]);
@@ -39,7 +43,9 @@ const BrowseMovies = () => {
   const searchMovieHandler = () => {
     const keywords = inputRef.current.value;
     if (keywords.trim() !== "") {
-      history.push(`/movies?search_query=${keywords}&page=1`);
+      history.push(
+        `/movies?search_query=${keywords.replaceAll(" ", "+")}&page=1`
+      );
     } else {
       history.push("/movies?page=1");
     }
@@ -63,7 +69,10 @@ const BrowseMovies = () => {
     <div className={classes.container}>
       <h1 className={classes.title}>Browse Movies</h1>
       <div className={classes["filter-container"]}>
-        <input ref={inputRef}></input>
+        <input
+          ref={inputRef}
+          onKeyDown={(e) => e.key === "Enter" && searchMovieHandler()}
+        ></input>
         <button onClick={searchMovieHandler}>SEARCH</button>
       </div>
       <ul className={classes.genres}>

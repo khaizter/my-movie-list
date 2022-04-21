@@ -26,7 +26,13 @@ const Header = () => {
       </Link>
       <ul className={classes.navigation}>
         <li className={classes["search-movie"]}>
-          <input type="text" name="" id="" ref={searchRef} />
+          <input
+            type="text"
+            name=""
+            id=""
+            ref={searchRef}
+            onKeyDown={(e) => e.key === "Enter" && searchMovieHandler()}
+          />
           <button onClick={searchMovieHandler}>
             <FaSearch />
           </button>
