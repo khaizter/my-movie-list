@@ -3,9 +3,7 @@ const url = "https://api.themoviedb.org/3";
 export const imageUrl = "https://image.tmdb.org/t/p/";
 const discoverUrl = `${url}/discover/movie?api_key=${apiKey}&page=1`;
 const nowPlayingUrl = `${url}/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`;
-const movieDetailsUrl = `${url}/movie/movieId?api_key=${apiKey}&language=en-US`;
-const movieCreditsUrl = `${url}/movie/movieId/credits?api_key=${apiKey}&language=en-US`;
-const movieVideosUrl = `${url}/movie/movieId/videos?api_key=${apiKey}&language=en-US`;
+const movieDetailsUrl = `${url}/movie/movieId?api_key=${apiKey}&language=en-US&append_to_response=videos,credits`;
 const popularMoviesUrl = `${url}/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 const topratedMoviesUrl = `${url}/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
 const upcomingMoviesUrl = `${url}/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`;
@@ -32,18 +30,6 @@ export const fetchNowPlaying = async () => {
 
 export const fetchMovieDetails = async (movieId) => {
   const response = await fetch(movieDetailsUrl.replace("movieId", movieId));
-  const data = await response.json();
-  return data;
-};
-
-export const fetchMovieCredits = async (movieId) => {
-  const response = await fetch(movieCreditsUrl.replace("movieId", movieId));
-  const data = await response.json();
-  return data;
-};
-
-export const fetchMovieVideos = async (movieId) => {
-  const response = await fetch(movieVideosUrl.replace("movieId", movieId));
   const data = await response.json();
   return data;
 };

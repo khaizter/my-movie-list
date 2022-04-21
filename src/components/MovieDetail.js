@@ -3,12 +3,7 @@ import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import { useParams, Link } from "react-router-dom";
 import Modal from "./Modal";
-import {
-  fetchMovieCredits,
-  fetchMovieDetails,
-  fetchMovieVideos,
-  imageUrl,
-} from "../data";
+import { fetchMovieDetails, imageUrl } from "../data";
 import Error from "../pages/Error";
 
 const convertMinutesToHours = (totalMinutes) => {
@@ -19,8 +14,6 @@ const convertMinutesToHours = (totalMinutes) => {
 
 const MovieDetail = () => {
   const [details, setDetails] = useState({});
-  const [credits, setCredits] = useState({});
-  const [videos, setVideos] = useState({});
   const { movieId } = useParams();
 
   const [showTrailer, setShowTrailer] = useState(false);
@@ -29,12 +22,6 @@ const MovieDetail = () => {
     const fetchApi = async () => {
       const detailsData = await fetchMovieDetails(movieId);
       setDetails(detailsData);
-
-      const creditsData = await fetchMovieCredits(movieId);
-      setCredits(creditsData);
-
-      const videosData = await fetchMovieVideos(movieId);
-      setVideos(videosData);
     };
     fetchApi();
   }, [movieId]);
@@ -89,8 +76,8 @@ const MovieDetail = () => {
         <section className={classes["movie-cast-section"]}>
           <h2>Cast</h2>
           <ul>
-            {credits.cast &&
-              credits.cast.slice(0, 3).map((artist) => {
+            {details.credits &&
+              details.credits.cast.slice(0, 3).map((artist) => {
                 return (
                   <li key={artist.id}>
                     <img
@@ -110,9 +97,9 @@ const MovieDetail = () => {
 
         <Modal showModal={showTrailer} onClose={() => setShowTrailer(false)}>
           <p>Trailer</p>
-          {videos.results && (
+          {details.videos && (
             <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${videos.results[0].key}`}
+              url={`https://www.youtube.com/watch?v=${details.videos.results[0].key}`}
               playing
               controls={true}
             />

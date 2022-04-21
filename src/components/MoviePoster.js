@@ -6,7 +6,6 @@ const MoviePoster = ({ poster_path, title, id }) => {
   const history = useHistory();
 
   const showDetailHandler = () => {
-    console.log(id);
     history.push(`/movies/${id}`);
   };
 

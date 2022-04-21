@@ -17,8 +17,6 @@ const BrowseMovies = () => {
   const currentPage = parseInt(queryParams.get("page")) || 1; // if queryParams return null default is page 1
   const genreQuery = parseInt(queryParams.get("genre"));
 
-  console.log(searchQuery);
-
   const [totalPage, setTotalPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
