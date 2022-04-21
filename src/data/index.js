@@ -2,7 +2,7 @@ const apiKey = "eb56800a149ce9fa8f8b67af5e2a01ab";
 const url = "https://api.themoviedb.org/3";
 export const imageUrl = "https://image.tmdb.org/t/p/";
 const discoverUrl = `${url}/discover/movie?api_key=${apiKey}&page=1`;
-const nowPlayingUrl = `${url}/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`;
+const nowPlayingUrl = `${url}/movie/now_playing?api_key=${apiKey}&language=en-US&page=1&append_to_response=videos`;
 const movieDetailsUrl = `${url}/movie/movieId?api_key=${apiKey}&language=en-US&append_to_response=videos,credits`;
 const popularMoviesUrl = `${url}/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 const topratedMoviesUrl = `${url}/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;

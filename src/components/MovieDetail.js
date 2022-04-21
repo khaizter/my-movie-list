@@ -5,6 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import Modal from "./Modal";
 import { fetchMovieDetails, imageUrl } from "../data";
 import Error from "../pages/Error";
+import MovieTrailer from "./MovieTrailer";
 
 const convertMinutesToHours = (totalMinutes) => {
   const hours = Math.floor(totalMinutes / 60);
@@ -94,18 +95,13 @@ const MovieDetail = () => {
               })}
           </ul>
         </section>
-
-        <Modal showModal={showTrailer} onClose={() => setShowTrailer(false)}>
-          <p>Trailer</p>
-          {details.videos && (
-            <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${details.videos.results[0].key}`}
-              playing
-              controls={true}
-            />
-          )}
-          <button onClick={() => setShowTrailer(false)}>Back</button>
-        </Modal>
+        {details.videos && (
+          <MovieTrailer
+            showTrailer={showTrailer}
+            setShowTrailer={setShowTrailer}
+            trailerUrl={details.videos.results[0].key}
+          />
+        )}
       </div>
     );
   }
