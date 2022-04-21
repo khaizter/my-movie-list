@@ -43,3 +43,29 @@
   color: white;
   cursor: pointer;
 }
+
+.genres {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.genre {
+  display: inline-block;
+  margin: 0.3rem 0.3rem;
+  border: 1px #46a29f solid;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 8px 12px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.genre:hover {
+  background-color: #46a29f;
+}
+
+.active {
+  background-color: #46a29f;
+}

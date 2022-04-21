@@ -19,6 +19,7 @@
 }
 
 .active {
+  cursor: not-allowed !important;
   font-size: larger;
   color: #46a29f !important;
 }

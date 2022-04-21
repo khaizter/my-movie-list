@@ -1,7 +1,7 @@
 import classes from "./BrowseMovies.module.css";
 import React, { useEffect, useState, useRef } from "react";
 import MoviePosterList from "./MoviePosterList";
-import { fetchSearchMovies } from "../data";
+import { fetchGenres, fetchSearchMovies, fetchGenreMovies } from "../data";
 import Pagination from "./Pagination";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -13,19 +13,28 @@ const BrowseMovies = () => {
 
   const searchQuery = queryParams.get("search_query") || ""; // if queryParams return null we set it to empty string then
   const currentPage = parseInt(queryParams.get("page")) || 1; // if queryParams return null default is page 1
+  const genreQuery = parseInt(queryParams.get("genre"));
 
   const [totalPage, setTotalPage] = useState(1);
   const [movies, setMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
   const inputRef = useRef();
 
   useEffect(() => {
     const fetchApi = async () => {
-      const moviesData = await fetchSearchMovies(searchQuery, currentPage);
+      let moviesData;
+      if (genreQuery) {
+        moviesData = await fetchGenreMovies(genreQuery, currentPage);
+      } else {
+        moviesData = await fetchSearchMovies(searchQuery, currentPage);
+      }
+      const genresData = await fetchGenres();
       setMovies(moviesData.results);
       setTotalPage(moviesData.total_pages);
+      setGenres(genresData.genres);
     };
     fetchApi();
-  }, [searchQuery, currentPage]);
+  }, [searchQuery, currentPage, genreQuery]);
 
   const searchMovieHandler = () => {
     const keywords = inputRef.current.value;
@@ -39,9 +48,15 @@ const BrowseMovies = () => {
   const setPageHandler = (newPage) => {
     if (searchQuery.trim() !== "") {
       history.push(`/movies?search_query=${searchQuery}&page=${newPage}`);
+    } else if (genreQuery) {
+      history.push(`/movies?genre=${genreQuery}&page=${newPage}`);
     } else {
       history.push(`/movies?page=${newPage}`);
     }
+  };
+
+  const genreHandler = (genreId) => {
+    history.push(`/movies?genre=${genreId}`);
   };
 
   return (
@@ -51,6 +66,21 @@ const BrowseMovies = () => {
         <input ref={inputRef}></input>
         <button onClick={searchMovieHandler}>SEARCH</button>
       </div>
+      <ul className={classes.genres}>
+        {genres.map((genre) => (
+          <li key={genre.id}>
+            <button
+              className={
+                classes.genre +
+                (genre.id === genreQuery ? " " + classes.active : "")
+              }
+              onClick={genreHandler.bind(null, genre.id)}
+            >
+              {genre.name}
+            </button>
+          </li>
+        ))}
+      </ul>
       <Pagination
         totalPage={totalPage}
         currentPage={currentPage}

@@ -10,7 +10,7 @@ import Header from "./components/Header";
 function App() {
   useEffect(() => {
     // fetchConfiguration();
-    // fetchTest();
+    fetchTest();
   }, []);
 
   const fetchConfiguration = async () => {
@@ -19,17 +19,18 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
       });
   };
 
   const fetchTest = async () => {
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=eb56800a149ce9fa8f8b67af5e2a01ab&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`
+      `
+      https://api.themoviedb.org/3/genre/movie/list?api_key=eb56800a149ce9fa8f8b67af5e2a01ab&language=en-US`
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
       });
   };
 

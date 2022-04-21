@@ -30,8 +30,8 @@ const MovieSliderSection = () => {
       showStatus={false}
       emulateTouch={true}
       infiniteLoop={true}
-      autoPlay={false}
-      interval={3000}
+      interval={5000}
+      autoPlay={true}
       className={classes["carousel-container"]}
     >
       {movies.map((movie) => {

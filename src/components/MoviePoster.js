@@ -5,8 +5,6 @@ import { useHistory } from "react-router-dom";
 const MoviePoster = ({ poster_path, title, id }) => {
   const history = useHistory();
 
-  console.log({ title, poster_path });
-
   const showDetailHandler = () => {
     console.log(id);
     history.push(`/movies/${id}`);

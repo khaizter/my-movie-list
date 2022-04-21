@@ -7,7 +7,7 @@
   justify-content: space-between;
 }
 
-.header li {
+.header > li {
   margin: auto;
 }
 
@@ -20,6 +20,7 @@
   height: 100px;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .movie-icon {
@@ -31,6 +32,10 @@
 .logo > h1 {
   font-size: xx-large;
   color: white;
+}
+
+.navigation > * {
+  margin: auto 1rem;
 }
 
 .search-movie {
@@ -79,6 +84,7 @@
 .nav-link {
   color: white;
   font-size: larger;
+  text-decoration: none;
 }
 
 .selected {
