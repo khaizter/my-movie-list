@@ -35,7 +35,7 @@ const MovieSliderSection = () => {
       <Carousel
         showThumbs={false}
         showStatus={false}
-        emulateTouch={false}
+        emulateTouch={true}
         infiniteLoop={true}
         interval={5000}
         autoPlay={false}

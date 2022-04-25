@@ -5,6 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 
 .header > li {
@@ -35,6 +37,7 @@
 }
 
 .navigation > * {
+  height: 100%;
   margin: auto 1rem;
 }
 
@@ -42,6 +45,7 @@
   width: 100%;
   position: relative;
   display: flex;
+  align-items: center;
 }
 
 .search-movie > input {
@@ -85,6 +89,11 @@
   color: white;
   font-size: larger;
   text-decoration: none;
+  transition: 0.4s ease-in;
+}
+
+.nav-link:hover {
+  color: #66fcf1;
 }
 
 .selected {

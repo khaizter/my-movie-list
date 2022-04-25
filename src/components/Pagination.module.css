@@ -16,6 +16,11 @@
   border: 1px #46a29f solid;
   color: white;
   cursor: pointer;
+  transition: 0.4s ease-in;
+}
+
+.container > button:hover {
+  background-color: #46a29f;
 }
 
 .active {

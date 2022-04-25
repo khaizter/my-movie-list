@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { RiMovie2Line } from "react-icons/ri";
+import GenresDropdown from "./GenresDropdown";
 
 const Header = () => {
   const searchRef = useRef();
@@ -25,6 +26,18 @@ const Header = () => {
         <h1>My-Movie-List</h1>
       </Link>
       <ul className={classes.navigation}>
+        <li>
+          <GenresDropdown />
+        </li>
+        <li>
+          <NavLink
+            to="/movies"
+            className={classes["nav-link"]}
+            activeClassName={classes.selected}
+          >
+            Movies
+          </NavLink>
+        </li>
         <li className={classes["search-movie"]}>
           <input
             type="text"
@@ -36,24 +49,6 @@ const Header = () => {
           <button onClick={searchMovieHandler}>
             <FaSearch />
           </button>
-        </li>
-        <li>
-          <NavLink
-            to="/movies"
-            className={classes["nav-link"]}
-            activeClassName={classes.selected}
-          >
-            Genres
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/movies"
-            className={classes["nav-link"]}
-            activeClassName={classes.selected}
-          >
-            Movies
-          </NavLink>
         </li>
       </ul>
     </header>

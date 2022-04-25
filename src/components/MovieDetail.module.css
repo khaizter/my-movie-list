@@ -32,6 +32,7 @@
   padding-bottom: 8px;
   color: #fff;
   cursor: pointer;
+  transition: 0.4s ease-in;
 }
 
 .movie-poster-container button:hover {

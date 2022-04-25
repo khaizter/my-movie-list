@@ -1,10 +1,9 @@
 .carousel-container li {
-  padding: 0;
+  /* padding: 0; */
 }
 .movie-slide {
   height: 500px;
   width: 100%;
-  /* padding: 1rem; */
   background-repeat: no-repeat;
   background-size: cover;
   text-align: start;
@@ -61,6 +60,7 @@
   padding-bottom: 8px;
   margin: 0 0.2rem;
   cursor: pointer;
+  transition: 0.4s ease-in;
 }
 
 .movie-slide__actions > button:hover {

@@ -95,7 +95,7 @@ const MovieDetail = () => {
               })}
           </ul>
         </section>
-        {details.videos && (
+        {details.videos && details.videos.results[0] && (
           <MovieTrailer
             showTrailer={showTrailer}
             setShowTrailer={setShowTrailer}
