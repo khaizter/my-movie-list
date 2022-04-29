@@ -1,9 +1,10 @@
 import classes from "./BrowseMovies.module.css";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, Fragment } from "react";
 import MoviePosterList from "./MoviePosterList";
 import { fetchGenres, fetchSearchMovies, fetchGenreMovies } from "../data";
 import Pagination from "./Pagination";
 import { useHistory, useLocation } from "react-router-dom";
+import { ClipLoader, BeatLoader } from "react-spinners";
 
 const BrowseMovies = () => {
   const history = useHistory();
@@ -19,10 +20,13 @@ const BrowseMovies = () => {
 
   const [totalPage, setTotalPage] = useState(1);
   const [movies, setMovies] = useState([]);
+  const [isLoadingMovies, setIsLoadingMovies] = useState(false);
   const [genres, setGenres] = useState([]);
   const inputRef = useRef();
 
   useEffect(() => {
+    console.log("loading");
+    setIsLoadingMovies(true);
     const fetchApi = async () => {
       let moviesData;
       if (genreQuery) {
@@ -34,6 +38,8 @@ const BrowseMovies = () => {
       setMovies(moviesData.results);
       setTotalPage(moviesData.total_pages);
       setGenres(genresData.genres);
+      console.log("loading end");
+      setIsLoadingMovies(false);
     };
     fetchApi();
   }, [searchQuery, currentPage, genreQuery]);
@@ -88,18 +94,27 @@ const BrowseMovies = () => {
           </li>
         ))}
       </ul>
-      <Pagination
-        totalPage={totalPage}
-        currentPage={currentPage}
-        setPage={setPageHandler}
-      />
-      {movies.length > 0 && <MoviePosterList movies={movies} />}
-      {movies.length === 0 && <p>No movies found!</p>}
-      <Pagination
-        totalPage={totalPage}
-        currentPage={currentPage}
-        setPage={setPageHandler}
-      />
+      {isLoadingMovies && (
+        <Fragment>
+          <ClipLoader color="#00FFFF" size="120" />
+        </Fragment>
+      )}
+      {!isLoadingMovies && (
+        <Fragment>
+          <Pagination
+            totalPage={totalPage}
+            currentPage={currentPage}
+            setPage={setPageHandler}
+          />
+          <MoviePosterList movies={movies} />
+          <Pagination
+            totalPage={totalPage}
+            currentPage={currentPage}
+            setPage={setPageHandler}
+          />
+        </Fragment>
+      )}
+      {!isLoadingMovies && movies.length === 0 && <p>No movies found!</p>}
     </div>
   );
 };

@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: calc(100vh - 85px);
 }
 
 .title {
@@ -74,4 +75,13 @@
 
 .active {
   background-color: #46a29f;
+}
+
+.container > span {
+  margin-top: 10rem;
+  /* align-self: end; */
+}
+
+.beat-loader {
+  /* align-self: end; */
 }

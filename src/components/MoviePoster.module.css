@@ -1,6 +1,7 @@
 .movie-poster-container {
   /* width: 25%; */
   padding: 1rem;
+  padding-bottom: 2rem;
 }
 
 .movie-poster {

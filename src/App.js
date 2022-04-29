@@ -6,6 +6,7 @@ import Browse from "./pages/Browse";
 import Error from "./pages/Error";
 import Movie from "./pages/Movie";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   useEffect(() => {
@@ -51,6 +52,7 @@ function App() {
           <Error />
         </Route>
       </Switch>
+      <Footer />
     </Fragment>
   );
 }
