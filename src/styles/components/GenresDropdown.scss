@@ -1,0 +1,51 @@
+@use "../abstracts" as *;
+
+.genres-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 70px;
+
+  &__toggle {
+    color: $white;
+    background: none;
+    border: none;
+    font-size: larger;
+    cursor: pointer;
+    padding: 0;
+
+    &--active {
+      color: $light-cyan;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100%);
+    left: 0;
+    background-color: $dark-gray-transparent;
+  }
+
+  &__menu-list {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    list-style: none;
+  }
+
+  &__menu-item {
+    text-align: start;
+    display: block;
+    color: $white;
+    text-decoration: none;
+    padding-left: 0.75rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-right: 2rem;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: $dark-cyan;
+    }
+  }
+}

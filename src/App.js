@@ -1,11 +1,10 @@
-import "./App.css";
 import React, { Fragment, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Browse from "./pages/Browse";
 import Error from "./pages/Error";
 import Movie from "./pages/Movie";
-import Header from "./components/Header";
+import Header from "./layout/Header";
 import Footer from "./components/Footer";
 
 function App() {

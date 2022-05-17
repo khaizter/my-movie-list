@@ -1,7 +1,7 @@
-import classes from "./GenresDropdown.module.css";
+import "../styles/components/GenresDropdown.scss";
 import React, { useState, useEffect } from "react";
 import { fetchGenres } from "../data";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const GenresDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,25 +25,27 @@ const GenresDropdown = () => {
   };
 
   return (
-    <div className={classes["container"]} onMouseLeave={dropDownCloseHandler}>
+    <div className="genres-dropdown">
       <button
-        className={`${classes["button"]} ${isOpen && classes["active"]}`}
+        className={`genres-dropdown__toggle ${
+          isOpen && "genres-dropdown__toggle--active"
+        }`}
         onMouseEnter={dropDownOpenHandler}
       >
         Genres
       </button>
       {isOpen && (
         <div
-          className={classes["dropdown"]}
+          className="genres-dropdown__menu"
           onMouseLeave={dropDownCloseHandler}
         >
-          <ul className={classes["menu"]}>
+          <ul className="genres-dropdown__menu-list">
             {genres.map((genre) => {
               return (
-                <li key={genre.id} className={classes["menu-item"]}>
+                <li key={genre.id}>
                   <Link
                     to={`/movies?genre=${genre.id}`}
-                    className={classes.link}
+                    className="genres-dropdown__menu-item"
                   >
                     {genre.name}
                   </Link>

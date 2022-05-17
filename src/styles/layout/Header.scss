@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  background-color: #202833;
+  padding: 0 5rem;
+  z-index: 1;
+
+  &__brand-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__brand-logo {
+    height: 70px;
+    width: 70px;
+    color: #66fcf1;
+  }
+
+  &__brand-name {
+    font-size: xx-large;
+    color: white;
+    margin-bottom: 0;
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__nav-link {
+    color: white;
+    font-size: larger;
+    text-decoration: none;
+    transition: 0.4s ease-in;
+
+    &:hover {
+      color: #66fcf1;
+    }
+
+    &--selected {
+      color: #66fcf1;
+    }
+  }
+}
