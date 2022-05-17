@@ -1,0 +1,51 @@
+@use "../abstracts" as *;
+
+.movie-poster {
+  &__display {
+    cursor: pointer;
+    position: relative;
+    border: 3px solid $dark-gray;
+    aspect-ratio: 2 / 3;
+
+    &:hover {
+      border: 3px solid $light-cyan;
+    }
+  }
+
+  &__image {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  &__hover-overlay {
+    content: "";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.466);
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.4s ease;
+
+    svg {
+      width: 20%;
+      height: 20%;
+      color: $light-cyan;
+    }
+  }
+
+  &__display:hover > &__hover-overlay {
+    opacity: 1;
+  }
+}

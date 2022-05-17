@@ -1,9 +1,11 @@
+@use "../abstracts" as *;
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  background-color: #202833;
+  background-color: $dark-gray;
   padding: 0 5rem;
   z-index: 1;
 
@@ -16,12 +18,12 @@
   &__brand-logo {
     height: 70px;
     width: 70px;
-    color: #66fcf1;
+    color: $light-cyan;
   }
 
   &__brand-name {
     font-size: xx-large;
-    color: white;
+    color: $white;
     margin-bottom: 0;
   }
 
@@ -35,17 +37,17 @@
   }
 
   &__nav-link {
-    color: white;
+    color: $white;
     font-size: larger;
     text-decoration: none;
     transition: 0.4s ease-in;
 
     &:hover {
-      color: #66fcf1;
+      color: $light-cyan;
     }
 
     &--selected {
-      color: #66fcf1;
+      color: $light-cyan;
     }
   }
 }

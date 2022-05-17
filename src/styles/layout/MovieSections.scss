@@ -1,0 +1,10 @@
+@use "../abstracts" as *;
+
+.movie-sections {
+  display: flex;
+  flex-direction: column;
+  background-color: $dark-blue;
+  padding: 3rem 10vw;
+  color: $white;
+  gap: 1rem;
+}

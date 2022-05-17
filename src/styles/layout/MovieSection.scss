@@ -1,0 +1,15 @@
+.movie-section {
+  &__section-title {
+    color: #46a29f;
+  }
+
+  &__movie-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 1rem;
+    gap: 1rem;
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

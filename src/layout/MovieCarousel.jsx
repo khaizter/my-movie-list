@@ -1,17 +1,19 @@
-import classes from "./MovieSliderSection.module.css";
-import React, { useEffect, useState, Fragment } from "react";
-import { useHistory } from "react-router-dom";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
-import { fetchNowPlaying } from "../data";
-import MovieTrailer from "./MovieTrailer";
+import "../styles/layout/MovieCarousel.scss";
 
-const MovieSliderSection = () => {
-  const [movies, setMovies] = useState([]);
+import React, { useState, useEffect, Fragment } from "react";
+import { useHistory } from "react-router-dom";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { fetchNowPlaying } from "../data";
+// import MovieTrailer from "./MovieTrailer";
+import MovieTrailer from "../components/MovieTrailer";
+
+const MovieCarousel = () => {
   const history = useHistory();
+  const [movies, setMovies] = useState([]);
   const numberOfShowcase = 6;
-  const [showTrailer, setShowTrailer] = useState(false);
   const [currentMovieId, setCurrentMovieId] = useState();
+  const [showTrailer, setShowTrailer] = useState(false);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -39,31 +41,31 @@ const MovieSliderSection = () => {
         infiniteLoop={true}
         interval={5000}
         autoPlay={false}
-        className={classes["carousel-container"]}
+        className="movie-carousel"
       >
         {movies.map((movie) => {
           return (
             <div
               key={movie.id}
-              className={classes["movie-slide"]}
+              className="movie-carousel__movie-slide"
               style={{
                 backgroundImage: `url("https://image.tmdb.org/t/p/w1280${movie.backdrop_path}")`,
               }}
             >
-              <div className={classes["movie-slide__content-box"]}>
-                <h1 className={classes["movie-slide__title"]}>{movie.title}</h1>
-                <p className={classes["movie-slide__overview"]}>
+              <div className="movie-carousel__movie-details">
+                <h1 className="movie-carousel__movie-title">{movie.title}</h1>
+                <p className="movie-carousel__movie-overview">
                   {movie.overview}
                 </p>
-                <div className={classes["movie-slide__actions"]}>
+                <div className="movie-carousel__actions">
                   <button
-                    className={classes["movie-slide__more-details"]}
+                    className="movie-carousel__cta"
                     onClick={detailsHandler.bind(null, movie.id)}
                   >
                     MORE DETAILS
                   </button>
                   <button
-                    className={classes["movie-slide__trailer"]}
+                    className="movie-carousel__cta"
                     onClick={trailerHandler.bind(null, movie.id)}
                   >
                     SEE TRAILER
@@ -83,4 +85,4 @@ const MovieSliderSection = () => {
   );
 };
 
-export default MovieSliderSection;
+export default MovieCarousel;

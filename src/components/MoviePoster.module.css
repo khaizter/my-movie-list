@@ -1,13 +1,11 @@
 .movie-poster-container {
-  /* width: 25%; */
   padding: 1rem;
   padding-bottom: 2rem;
 }
 
 .movie-poster {
   width: 100%;
-  height: 100%;
-  /* aspect-ratio: 2 / 3; */
+  aspect-ratio: 2 / 3;
   cursor: pointer;
   position: relative;
   border: 3px solid #202833;
@@ -47,6 +45,7 @@
 }
 
 .movie-poster__img {
+  display: block;
   height: 100%;
   width: 100%;
   object-fit: cover;

@@ -1,12 +1,13 @@
-import classes from "./MovieSection.module.css";
+import "../styles/layout/MovieSection.scss";
 import React from "react";
-import MoviePoster from "./MoviePoster";
+// import MoviePoster from "../components/MoviePoster";
+import MoviePoster from "../newcomponents/MoviePoster";
 
 const MovieSection = ({ movies, title = "Movie Section" }) => {
   return (
-    <section className={classes.section}>
-      <h1 className={classes["section-title"]}>{title}</h1>
-      <div className={classes["movie-list"]}>
+    <section className="movie-section">
+      <h1 className="movie-section__section-title">{title}</h1>
+      <div className="movie-section__movie-list">
         {movies.map((movie) => {
           return (
             <MoviePoster
