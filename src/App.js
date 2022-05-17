@@ -38,7 +38,7 @@ function App() {
     <Fragment>
       <Header />
       <Switch>
-        <Route path="/" exact>
+        <Route path="/my-movie-list/" exact>
           <Home />
         </Route>
         <Route path="/movies/:movieId">
