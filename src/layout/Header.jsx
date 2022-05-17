@@ -8,7 +8,7 @@ import SearchBar from "../newcomponents/SearchBar";
 const Header = () => {
   return (
     <header className="header">
-      <Link to="/" className="header__brand-container">
+      <Link to="/my-movie-list/" className="header__brand-container">
         <RiMovie2Line className="header__brand-logo" />
         <h1 className="header__brand-name">my-movie-list</h1>
       </Link>
