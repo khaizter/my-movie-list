@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
-import MovieSliderSection from "../components/MovieSliderSection";
+import MovieCarousel from "../newcomponents/MovieCarousel";
 import MovieSections from "../components/MovieSections";
 
 const Home = () => {
   return (
     <Fragment>
-      <MovieSliderSection />
+      <MovieCarousel />
       <MovieSections />
     </Fragment>
   );

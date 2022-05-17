@@ -1,0 +1,63 @@
+@use "../abstracts" as *;
+
+.movie-carousel {
+  &__movie-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    height: 31.25rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: start;
+    color: $white;
+
+    &::before {
+      content: "";
+      position: fixed;
+      background-color: $black;
+      width: 100%;
+      height: 100%;
+      opacity: 0.7;
+    }
+  }
+  &__movie-details {
+    max-width: 75ch;
+    z-index: 1;
+    margin-top: 110px;
+    margin-left: 5rem;
+  }
+
+  &__movie-title {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: $light-cyan;
+  }
+
+  &__movie-overview {
+    border-left: 4px $orange solid;
+    color: $gray;
+    padding-left: 1rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__cta {
+    display: block;
+    background: none;
+    border: 2px $dark-cyan solid;
+    color: $white;
+    padding: 8px 6px;
+    cursor: pointer;
+    transition: 0.4s ease-in;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: $dark-gray-transparent;
+    }
+  }
+}
