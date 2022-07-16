@@ -2,7 +2,7 @@
 
 A React Application using TMDB API and SASS
 
-Live Site URL: [Github Page](https://khaizter.github.io/my-movie-list/)
+Live Site URL: [Netlify](https://khaizter-my-movie-list.netlify.app/)
 
 ## Technologies/ Resources i used
 
