@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Browse from "./pages/Browse";
 import Error from "./pages/Error";
@@ -46,6 +46,9 @@ function App() {
         </Route>
         <Route path="/movies">
           <Browse />
+        </Route>
+        <Route path="/">
+          <Redirect to="/my-movie-list/" />
         </Route>
         <Route path="*">
           <Error />
